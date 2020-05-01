@@ -286,7 +286,8 @@ export default class HashList{
         const offset = this.base.offset;
         const residue = ( num_sign || 0 ) % Math.pow(16,offset);
         let sign = residue.toString(16);
-        if(sign.length === 1){
+        const extr = this.base.offset - sign.length;
+        for(let i = 0; i < extr; i++){
             sign = '0' + sign;
         }
         this.current_md5 = sign + num_sign;
